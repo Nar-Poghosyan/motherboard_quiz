@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Արդյունք</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at top left, #182848, transparent 40%),
+                radial-gradient(circle at bottom right, #301934, transparent 40%),
+                #080b12;
+
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .result-box {
+            width: 90%;
+            max-width: 600px;
+            padding: 50px 40px;
+
+            text-align: center;
+
+            background: rgba(20, 24, 35, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+
+            box-shadow:
+                0 0 40px rgba(90, 120, 255, 0.15),
+                0 0 100px rgba(130, 50, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+
+            animation: appear 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+
+            background: linear-gradient(90deg, #6ea8ff, #b56cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        .subtitle {
+            color: #aeb6c7;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .score {
+            font-size: 70px;
+            font-weight: bold;
+            margin: 20px 0;
+
+            color: #ffffff;
+
+            animation: scorePop 0.8s ease-out;
+        }
+
+        .percentage {
+            font-size: 25px;
+            color: #8ea7ff;
+            margin-bottom: 35px;
+        }
+
+        .message {
+            font-size: 20px;
+            color: #d6dbea;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 30px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #5f7cff, #9a5cff);
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            text-decoration: none;
+
+            box-shadow: 0 8px 25px rgba(100, 100, 255, 0.25);
+
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-4px) scale(1.03);
+
+            box-shadow:
+                0 12px 35px rgba(100, 100, 255, 0.4);
+        }
+
+        .button:active {
+            transform: scale(0.97);
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes scorePop {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            70% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes titleGlow {
+            from {
+                filter: drop-shadow(0 0 4px rgba(110, 168, 255, 0.2));
+            }
+
+            to {
+                filter: drop-shadow(0 0 14px rgba(181, 108, 255, 0.5));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="result-box">
+
+        <h1>Թեստն ավարտված է!</h1>
+
+        <p class="subtitle">
+            Ահա քո արդյունքը
+        </p>
+
+        <div class="score">
+            {{ score }} / 8
+        </div>
+
+        <div class="percentage">
+            {{ "%.1f"|format(percentage) }}%
+        </div>
+
+        {% if percentage >= 90 %}
+            <div class="message">
+                Գերազանց արդյունք։ 🔥
+            </div>
+
+        {% elif percentage >= 70 %}
+            <div class="message">
+                Շատ լավ արդյունք։ 💪
+            </div>
+
+        {% elif percentage >= 50 %}
+            <div class="message">
+                Լավ սկիզբ է, շարունակիր։
+            </div>
+
+        {% else %}
+            <div class="message">
+                Մի հանձնվիր։ Հաջորդ անգամ ավելի լավ կլինի։
+            </div>
+        {% endif %}
+
+        <a href="/" class="button">
+            Կրկին անցնել թեստը
+        </a>
+
+    </div>
+
+</body>
+</html>
