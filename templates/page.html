@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        padding: 25px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+
+        background:
+            radial-gradient(
+                circle at 15% 15%,
+                rgba(70, 100, 255, 0.20),
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at 85% 85%,
+                rgba(170, 60, 255, 0.16),
+                transparent 35%
+            ),
+            #080b12;
+
+        overflow-x: hidden;
+    }
+
+
+    /* MAIN QUIZ */
+
+    form {
+        width: 100%;
+        max-width: 850px;
+
+        padding: 40px;
+
+        background: rgba(20, 24, 35, 0.88);
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 0 40px rgba(80, 100, 255, 0.12),
+            0 0 100px rgba(140, 60, 255, 0.07);
+
+        backdrop-filter: blur(15px);
+
+        animation: appear 0.7s ease;
+    }
+
+
+    /* QUESTIONS */
+
+    .question {
+        animation: questionIn 0.45s ease;
+    }
+
+    .question h2 {
+        margin-bottom: 30px;
+
+        color: #f3f5fa;
+
+        font-size: 25px;
+        line-height: 1.5;
+        font-weight: 600;
+    }
+
+
+    /* ANSWERS */
+
+    .question label {
+        display: block;
+
+        width: 100%;
+
+        margin-bottom: 14px;
+        padding: 17px 20px;
+
+        background: rgba(255, 255, 255, 0.035);
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        border-radius: 14px;
+
+        color: #d8dce7;
+
+        font-size: 16px;
+        line-height: 1.5;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    /* HOVER */
+
+    .question label:hover {
+        transform: translateY(-2px);
+
+        background: rgba(95, 120, 255, 0.08);
+
+        border-color: rgba(120, 140, 255, 0.35);
+
+        box-shadow:
+            0 8px 20px rgba(70, 90, 180, 0.15);
+    }
+
+
+    /* RADIO BUTTON */
+
+    .question input[type="radio"] {
+        margin-right: 10px;
+
+        accent-color: #7185ff;
+
+        cursor: pointer;
+
+        transform: scale(1.15);
+    }
+
+
+    /* WHEN RADIO IS SELECTED */
+
+    .question input[type="radio"]:checked {
+        accent-color: #9a6cff;
+    }
+
+    .question input[type="radio"]:checked + span {
+        color: white;
+    }
+
+
+    /* BUTTON */
+
+    button {
+        display: block;
+
+        margin-top: 25px;
+        margin-left: auto;
+
+        padding: 14px 30px;
+
+        border: none;
+        border-radius: 12px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #5f7cff,
+                #9a5cff
+            );
+
+        color: white;
+
+        font-size: 16px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 8px 25px rgba(95, 100, 255, 0.25);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    button:hover {
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 12px 35px rgba(100, 100, 255, 0.4);
+    }
+
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+
+    /* ANIMATIONS */
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+
+    @keyframes questionIn {
+        from {
+            opacity: 0;
+            transform: translateX(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+    /* PHONE */
+
+    @media (max-width: 600px) {
+
+        body {
+            padding: 12px;
+
+            align-items: flex-start;
+        }
+
+
+        form {
+            margin-top: 12px;
+
+            padding: 22px 16px;
+
+            border-radius: 20px;
+        }
+
+
+        .question h2 {
+            margin-bottom: 22px;
+
+            font-size: 20px;
+            line-height: 1.45;
+        }
+
+
+        .question label {
+            padding: 15px;
+
+            font-size: 15px;
+            line-height: 1.45;
+
+            border-radius: 12px;
+        }
+
+
+        button {
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 15px;
+
+            font-size: 16px;
+        }
+    }
+
+
+    /* VERY SMALL PHONES */
+
+    @media (max-width: 380px) {
+
+        form {
+            padding: 18px 13px;
+        }
+
+
+        .question h2 {
+            font-size: 18px;
+        }
+
+
+        .question label {
+            padding: 13px;
+
+            font-size: 14px;
+        }
+    }
+
+</style>
+<body>
+
+    <form method="POST">
+        <div class=question id=question-1>
+            <h2>Ի՞նչ է մայրական սալը (System Board / Mainboard), և ի՞նչ դեր ունի այն համակարգչի աշխատանքում:</h2>
+            <label><input type="radio" name="q1" value="a">Համակարգչի հիմնական տպագիր սալն է, որը միացնում և ապահովում է համակարգի հի[...]
+            <label><input type="radio" name="q1" value="b">Միայն տվյալների պահպանման համար նախատեսված հիշողության սարք է</label>
+            <label><input type="radio" name="q1" value="c">Համակարգչի արտաքին պատյանն է, որի մեջ տեղադրվում են բոլոր սարքերը</label>
+            <label><input type="radio" name="q1" value="d">Միայն ինտերնետային կապ ապահովող սարք է</label>
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-2>
+            <h2>Ի՞նչ հայտնի արտադրող ֆիրմաներ են նշված տեքստում մայրական սալերի համար:</h2>
+            <label><input type="radio" name="q2" value="a">Intel, AMD, NVIDIA և Qualcomm</label>
+            <label><input type="radio" name="q2" value="b">Samsung, Apple, Sony և LG</label>
+            <label><input type="radio" name="q2" value="c">ASUS, Gigabyte, MSI և ASRock</label>
+            <label><input type="radio" name="q2" value="d">Microsoft, IBM, Oracle և Google</label>
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-3>
+            <h2>Ի՞նչ ֆունկցիա է իրականացնում չիպսեթը (Chipset):</h2>
+            <label><input type="radio" name="q3" value="a">Կառավարում է միայն համակարգչի արտաքին սարքերի սնուցումը</label>
+            <label><input type="radio" name="q3" value="b">Ապահովում և կառավարում է պրոցեսորի, հիշողության և այլ բաղադրիչների միջև տ[...]
+            <label><input type="radio" name="q3" value="c">Պահպանում է համակարգչի բոլոր օգտատերերի անձնական տվյալները</label>
+            <label><input type="radio" name="q3" value="d">Կատարում է օպերացիոն համակարգի բեռնումը՝ առանց այլ սարքերի մասնակցության[...]
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-4>
+            <h2>Ի՞նչ է ինֆորմացիոն շինան (Bus), և ինչի՞ համար է այն նախատեսված:</h2>
+            <label><input type="radio" name="q4" value="a">Հիշողության հատուկ տեսակ է, որը նախատեսված է ժամանակավոր տվյալների պահպան[...]
+            <label><input type="radio" name="q4" value="b">Մայրական սալի վրա տեղադրված միկրոսխեմա է, որը վերահսկում է պրոցեսորի ջերմ[...]
+            <label><input type="radio" name="q4" value="c">Համակարգչի սնուցման համակարգի այն հատվածն է, որը փոխանցում է էլեկտրական հ[...]
+            <label><input type="radio" name="q4" value="d">Հաղորդակցման ուղի է, որի միջոցով տվյալները, հասցեները և կառավարման ազդանշ[...]
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-5>
+            <h2>Ի՞նչ նպատակով է մայրական սալի վրա տեղադրվում CMOS մարտկոցը, և ի՞նչ տվյալներ են պահպանվում դրա միջոց[...]
+            <label><input type="radio" name="q5" value="a">Պահպանում է BIOS/UEFI-ի կարգավորումները, համակարգային ժամը և ամսաթիվը համակար[...]
+            <label><input type="radio" name="q5" value="b">Ապահովում է պրոցեսորի և օպերատիվ հիշողության մշտական սնուցումը</label>
+            <label><input type="radio" name="q5" value="c">Պահպանում է օգտատիրոջ ֆայլերը համակարգիչն անջատելուց հետո</label>
+            <label><input type="radio" name="q5" value="d">Կարգավորում է համակարգչի ինտերնետային կապի արագությունը</label>
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-6>
+            <h2>Ի՞նչ է պահպանվում EEPROM հիշողության միկրոսխեմայում:</h2>
+            <label><input type="radio" name="q6" value="a">Միայն այն տվյալները, որոնք անհրաժեշտ են ընթացիկ ծրագրերի աշխատանքի համար[...]
+            <label><input type="radio" name="q6" value="b">Համակարգչի բոլոր մուլտիմեդիա ֆայլերը և փաստաթղթերը</label>
+            <label><input type="radio" name="q6" value="c">Էլեկտրական սնուցումն անջատելուց հետո պահպանվող ծրագրային կամ կարգավորու[...]
+            <label><input type="radio" name="q6" value="d">Միայն համակարգչի օպերատիվ հիշողության ժամանակավոր պատճենները</label>
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-7>
+            <h2>Ի՞նչ սարքերի միացման համար են նախատեսված HDD, FDD, CD-ROM կցաները:</h2>
+            <label><input type="radio" name="q7" value="a">Ցանցային քարտերի, մոդեմների և ձայնային քարտերի միացման համար</label>
+            <label><input type="radio" name="q7" value="b">Միայն USB կրիչների և արտաքին կոշտ սկավառակների միացման համար</label>
+            <label><input type="radio" name="q7" value="c">Մոնիտորի, ստեղնաշարի և մկնիկի միացման համար</label>
+            <label><input type="radio" name="q7" value="d">Կոշտ սկավառակի (HDD), ֆլոպպի սկավառակի (FDD) և CD-ROM սարքի միացման համար</label>
+            <button type="button" onclick="nextQuestion()">Հաջորդը</button>
+        </div>
+
+        <div class=question id=question-8>
+            <h2>Ի՞նչ է տեղադրվում պրոցեսորի վրա՝ դրա հովացումն ապահովելու համար:</h2>
+            <label><input type="radio" name="q8" value="a">CMOS ��արտկոց և BIOS միկրոսխեմա</label>
+            <label><input type="radio" name="q8" value="b">Ռադիատոր և օդափոխիչ, որոնք հեռացնում են պրոցեսորի առաջացրած ջերմությունը[...]
+            <label><input type="radio" name="q8" value="c">Չիպսեթ և օպերատիվ հիշողության մոդուլ</label>
+            <label><input type="radio" name="q8" value="d">EEPROM հիշողության միկրոսխեմա և սնուցման բլոկ</label>
+            <button type="submit">Ավարտել</button>
+        </div>
+
+    </form>
+<script>
+    let currentQuestion = 0;
+
+    let questions = document.querySelectorAll(".question");
+
+    questions.forEach(function(question) {
+        question.style.display = "none";
+    });
+
+    questions[currentQuestion].style.display = "block";
+
+    function nextQuestion() {
+
+        questions[currentQuestion].style.display = "none";
+
+        currentQuestion++;
+
+        questions[currentQuestion].style.display = "block";
+    
+    }
+</script>
+</body>
+</html>
